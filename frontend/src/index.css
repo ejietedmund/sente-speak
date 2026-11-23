@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-paper: 250 249 246;
+  --color-surface: 255 255 255;
+  --color-ink: 15 32 56;
+  --color-muted: 71 85 105;
+  --color-line: 203 213 225;
+  --color-primary: 15 42 84;
+  --color-primary-text: 255 255 255;
+  --color-accent: 21 128 61;
+  --color-accent-soft: 220 252 231;
+  --color-warning: 154 52 18;
+  --color-warning-soft: 255 247 237;
+  --color-danger: 176 25 33;
+  --color-danger-soft: 254 231 231;
+  --color-focus: 8 110 150;
+}
+
+.high-contrast {
+  --color-paper: 255 255 255;
+  --color-surface: 255 255 255;
+  --color-ink: 0 0 0;
+  --color-muted: 0 0 0;
+  --color-line: 0 0 0;
+  --color-primary: 0 0 0;
+  --color-primary-text: 255 255 255;
+  --color-accent: 0 90 0;
+  --color-accent-soft: 255 255 255;
+  --color-warning: 120 40 0;
+  --color-warning-soft: 255 255 255;
+  --color-danger: 150 0 0;
+  --color-danger-soft: 255 255 255;
+  --color-focus: 255 190 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+html.text-large {
+  font-size: 112.5%;
+}
+
+html.text-xlarge {
+  font-size: 125%;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--color-paper));
+  color: rgb(var(--color-ink));
+  font-family: "Segoe UI", Inter, system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 4px solid rgb(var(--color-focus));
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes sente-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.sente-pulse {
+  animation: sente-pulse 1.4s ease-in-out infinite;
+}
+
+.camera-frame::before,
+.camera-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0.5rem;
+  border: 3px dashed rgb(255 255 255 / 0.9);
+  border-radius: 0.75rem;
+  pointer-events: none;
+}

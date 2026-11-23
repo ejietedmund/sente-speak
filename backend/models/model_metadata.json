@@ -1,0 +1,58 @@
+{
+  "project": "SENTE SPEAK",
+  "task": "Ugandan banknote denomination classification",
+  "architecture": "MobileNetV2",
+  "input": {
+    "shape": [
+      1,
+      224,
+      224,
+      3
+    ],
+    "color_order": "RGB",
+    "dtype": "float32",
+    "raw_pixel_range": [
+      0,
+      255
+    ],
+    "model_preprocessing": "tf.keras.applications.mobilenet_v2.preprocess_input"
+  },
+  "output": {
+    "type": "softmax probabilities",
+    "class_count": 6,
+    "labels_file": "labels.txt",
+    "class_order": [
+      "UGX 1,000",
+      "UGX 2,000",
+      "UGX 5,000",
+      "UGX 10,000",
+      "UGX 20,000",
+      "UGX 50,000"
+    ]
+  },
+  "artifacts": {
+    "keras_model": "sente_speak_mobilenetv2.keras",
+    "tflite_float32": "sente_speak_float32.tflite",
+    "tflite_dynamic_range": "sente_speak_dynamic_range.tflite"
+  },
+  "dataset": {
+    "archive": "ugx_dataset_224.zip",
+    "archive_sha256": "9b071ba3cc8c84dacb2c3f2c6d112e4629951ec71dc973555650b6198e4e08e3",
+    "images_indexed": 1627,
+    "split_counts": {
+      "train": 1138,
+      "validation": 244,
+      "test": 245
+    },
+    "split_method": "stratified image-level split",
+    "random_state": 42,
+    "physical_note_independence_verified": false,
+    "capture_session_independence_verified": false
+  },
+  "evaluation": {
+    "keras_test_accuracy": 0.9428571428571428,
+    "tflite_test_accuracy": 0.9428571428571428,
+    "tflite_prediction_agreement_with_keras": 1.0
+  },
+  "created_utc": "2026-11-23T20:11:43.218709+00:00"
+}
